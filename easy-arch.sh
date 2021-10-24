@@ -97,7 +97,7 @@ parted -s "$DISK" \
     set 1 esp on \
     mkpart Cryptroot 513MiB 100% \
 
-ESP="/dev/disk/by-partlabel/ESP"
+    ESP="/dev/disk/by-partlabel/ESP"
 Cryptroot="/dev/disk/by-partlabel/Cryptroot"
 
 # Informing the Kernel of the changes.
@@ -184,10 +184,10 @@ sed -i "s,quiet,quiet cryptdevice=UUID=$UUID:cryptroot root=$BTRFS,g" /mnt/etc/d
 
 # Configuring the system.    
 arch-chroot /mnt /bin/bash -e <<EOF
-    
+
     # Setting up timezone.
     ln -sf /usr/share/zoneinfo/$(curl -s http://ip-api.com/line?fields=timezone) /etc/localtime &>/dev/null
-    
+
     # Setting up clock.
     hwclock --systohc
     # Generating locales.
@@ -207,7 +207,7 @@ arch-chroot /mnt /bin/bash -e <<EOF
     # Installing GRUB.
     echo "Installing GRUB on /boot."
     grub-install --target=x86_64-efi --efi-directory=/boot/ --bootloader-id=GRUB &>/dev/null
-    
+
     # Creating grub config file.
     echo "Creating GRUB config file."
     grub-mkconfig -o /boot/grub/grub.cfg &>/dev/null
