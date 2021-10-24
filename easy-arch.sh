@@ -142,7 +142,7 @@ kernel_selector
 
 # Pacstrap (setting up a base sytem onto the new root).
 echo "Installing the base system (it may take a while)."
-pacstrap /mnt base $kernel $microcode linux-firmware btrfs-progs grub grub-btrfs efibootmgr snapper reflector base-devel snap-pac zram-generator
+pacstrap /mnt base base-devel $kernel linux-headers $microcode linux-firmware btrfs-progs grub grub-btrfs efibootmgr snapper reflector base-devel snap-pac zram-generator
 
 network_selector
 
